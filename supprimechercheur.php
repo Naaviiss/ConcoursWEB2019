@@ -1,21 +1,35 @@
 <?php
-	echo "<h1>Modification de fiche client</h1>";
-  $connexion = mysqli_connect("localhost","g1","mdp01")
-  or die ("Tu es nul. Recommence.");
-  //$connexion = mysqli_connect("localhost","root","")
-  //or die ("Tu es nul. Recommence.");
 
-  $bd="WebContest";
 
-  mysqli_select_db($connexion,$bd)
-  or die ("Toujours pas.");
+  if(isset($_GET['id']) ){
+  	$login=$_GET['id'];
+  	$reg = '/^search([4-9]|[1-9][0-9])$/';
 
-  $chercheur = "search1";
+    if(preg_match($reg,$login)){
 
-  $requete = $connexion -> prepare("DELETE FROM Personnel WHERE id LIKE ?");
-  $requete->bind_param("s",$chercheur);
-  $requete -> execute();
-  $requete->close();
+      $connexion = mysqli_connect("localhost","g1","mdp01")
+      or die ("Tu es nul. Recommence.");
+      // $connexion = mysqli_connect("localhost","g1","")
+      // or die ("Tu es nul. Recommence.");
+
+      $bd="WebContest";
+
+      mysqli_select_db($connexion,$bd)
+      or die ("Toujours pas.");
+
+      $requete = $connexion -> prepare("DELETE FROM Personnel WHERE id LIKE ?");
+      // suppressions
+      $requete->bind_param("s",$login);
+      $requete -> execute();
+      $requete->close();
+      header('Location: admin.php');
+    }
+  	else{
+      echo "Vous ne pouvez pas supprimer ce chercheur";
+    }
+  }
+
+
 
 	mysqli_close($connexion);
 ?>
