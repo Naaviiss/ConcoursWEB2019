@@ -69,32 +69,27 @@ echo"</table>";
 //Bouton ajouter une ressource
 //echo "<div id='bouton' onclick=\"bascule('header1');\">Ajouter une ressource</div>";
 echo"<div class=\"input-group mb-3\"  onclick=\"bascule('header1');\">
-        <form method=\"post\" action=\"traitement.php\">
-            <p>
-                <label for=\"pseudo\">L'id :</label>
-                <input type=\"text\" name=\"id\" id=\"id\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
-                <label for=\"pseudo\">Le nom de la ressource :</label>
-                <input type=\"text\" name=\"nom\" id=\"nom\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
-            </p>
-
-          <select class=\"custom-select\" id=\"inputGroupSelect02\">
-            <option selected>Choisissez une ressource</option>
-            <option value=\"3DPrinter\">3DPrinter</option>
-            <option value=\"DroneXXL360r\">DroneXXL360r</option>
-            <option value=\"Harm256\">Harm256</option>
-          </select>
-
-          <INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \">;
-        </form>
+        <select class=\"custom-select\" id=\"inputGroupSelect02\">
+          <option selected>Choisissez une ressource</option>
+          <option value=\"3DPrinter\">3DPrinter</option>
+          <option value=\"DroneXXL360r\">DroneXXL360r</option>
+          <option value=\"Harm256\">Harm256</option>
+        </select>
+        <div class=\"input-group-append\">
+          <label class=\"input-group-text\" for=\"inputGroupSelect02\">Ajouter</label>
+        </div>
       </div>";
 echo "<div id='header1' style=\"visibility:hidden;\">
 
 <form method=\"post\" action=\"traitement.php\">
     <p>
         <label for=\"pseudo\">L'id :</label>
-        <input type=\"text\" name=\"id\" id=\"id\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
-        <label for=\"pseudo\">Le nom de la ressource :</label>
-        <input type=\"text\" name=\"nom\" id=\"nom\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
+        <select class=\"custom-select\" id=\"inputGroupSelect02\">
+          <option selected>Choisissez une ressource</option>
+          <option value=\"3DPrinter\">3DPrinter</option>
+          <option value=\"DroneXXL360r\">DroneXXL360r</option>
+          <option value=\"Harm256\">Harm256</option>
+        </select></br>
     </p>
 </form>
 
@@ -138,8 +133,11 @@ echo "<div id='header' style=\"visibility:hidden;\">
         <label for=\"pseudo\">Le mot de passe :</label>
         <input type=\"text\" name=\"mdp\" id=\"mdp\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
     </p>
-    <INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \">;
 </form>
+
+";
+
+echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \"></div>";
 
 echo "<pre></pre>";
 //Bouton pour le pdf
