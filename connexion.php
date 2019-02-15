@@ -4,39 +4,43 @@ session_start();
 
 error_reporting(E_ALL);
 
-if(isset($_POST['id'])){
+if(isset($_POST['id']) and isset($_POST['mdp'])){
 	$serveur = "localhost";
-$login = "g1";
-$mdp = "mdp01";
+$login = "root";
+$mdp = "";
 //nom de la base de donnees
-$bd="WebContest";
+$bd="webcontest";
 
 //connexion au serveur mysql (ici localhost)
 $connexion=mysqli_connect($serveur,$login,$mdp,$bd) 
 or die("Connexion au serveur $serveur impossible pour $login");
 	//  Récupération de l'utilisateur et de son pass hashé
 	$sql = "SELECT * FROM personnel WHERE id LIKE '".$_POST['id']."'";
-	$requete = mysqli_query($connexion,$sql);
-	while($ligne = mysql_fetch_row($requete)){
-		echo 'test';
-		array_push($data,$ligne);
+	
+	if($requete = mysqli_query($connexion,$sql))
+	{
+		$ligne = mysqli_fetch_row($requete);
+			$id =  htmlspecialchars($ligne[0]);
+			$mdp2 = htmlspecialchars($ligne[1]);
+		
 	}
-
-	$ligne=$requete[0];
-	echo 'yo'.$requete[0];
-
+	echo $id;
+	echo htmlspecialchars($mdp2);
 
 // Comparaison du pass envoyé via le formulaire avec la base
 
-	if ($ligne == null)
+	if (!isset($id))
 	{
-		echo 'Mauvais identifiant ou mot de passe !';
+		echo 'laMauvais identifiant ou mot de passe !';
 	}
 	else
 	{
-		if ($ligne['mdp'] == $_POST['mdp']) {
-			$_SESSION['id'] = $ligne['id'];
-			if(preg_match('/^search$/',$ligne['id'])){
+		$p = $_POST['mdp'];
+		
+		echo'ici'.htmlspecialchars(p); 
+		if (htmlspecialchars($p) == $mdp2) {
+			$_SESSION['id'] = $id;
+			if(preg_match('/^search$/',$id)){
 				$_SESSION['status'] = "search";
 				header('Location : index.php');
 			}
@@ -44,13 +48,14 @@ or die("Connexion au serveur $serveur impossible pour $login");
 				$_SESSION['status'] = "admin";
 				header('Location : admin.php');
 			}
-				
-			echo 'Vous êtes connecté !';
 		}
 		else {
 			echo 'Mauvais identifiant ou mot de passe !';
 		}
 	}
+}
+else{
+	echo 'zut';
 }
 
 ?>
