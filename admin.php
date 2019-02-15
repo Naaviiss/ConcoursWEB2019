@@ -103,7 +103,7 @@ echo"</table></center>";
 echo"<button type=\"button\" class=\"btn btn-secondary\" onclick=\"bascule('header1');\">Ajouter une ressource</button>";
 echo "<div id='header1' style=\"visibility:hidden;\">
 
-<form method=\"post\" action=\"traitement.php\">
+<form method=\"post\" action=\"ajoutressource.php\">
     <p>
         <label for=\"pseudo\">L'id :</label>
         <select class=\"custom-select\" id=\"inputGroupSelect02\">
@@ -145,8 +145,8 @@ while($ligne=mysqli_fetch_row($resultat)){
 }
 echo"</table></center>";
 //Bouton un chercheur
-echo "<div id='bouton' onclick=\"bascule('header');\">Ajouter un chercheur</div>";
-echo "<div id='header' style=\"visibility:hidden;\">
+echo"<button type=\"button\" class=\"btn btn-secondary\" onclick=\"bascule('header2');\">Ajouter un chercheur</button>";
+echo "<div id='header2' style=\"visibility:hidden;\">
 
 <form method=\"post\" action=\"ajouterchercheur.php\">
     <p>
