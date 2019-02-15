@@ -67,7 +67,6 @@ while($ligne=mysqli_fetch_row($resultat)){
 }
 echo"</table>";
 //Bouton ajouter une ressource
-//echo "<div id='bouton' onclick=\"bascule('header1');\">Ajouter une ressource</div>";
 echo"<button type=\"button\" class=\"btn btn-secondary\" onclick=\"bascule('header1');\">Ajouter une ressource</button>";
 echo "<div id='header1' style=\"visibility:hidden;\">
 
