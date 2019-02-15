@@ -9,7 +9,7 @@
         or die ("Erreur lors de la connexion à la base de données");
 
 
-    $requete = mysqli_query("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') LIKE ".$date);
+    $requete = mysqli_query("select * from Ressource");
 
     $data = array();
 
