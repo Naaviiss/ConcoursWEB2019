@@ -1,5 +1,5 @@
 <?php
-// session_start();
+ session_start();
 
 // Si deja connecter !
 // if (isset($_SESSION['id']) and !empty($_SESSION['id'])){
