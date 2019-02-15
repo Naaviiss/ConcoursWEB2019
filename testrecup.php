@@ -9,11 +9,11 @@
         or die ("Erreur lors de la connexion à la base de données");
 
 
-    $requete = mysqli_query("select * from Ressource");
+    $requete = mysqli_query($connexion,"select * from Ressource");
 
     $data = array();
 
-    while($ligne = mysqli_fetch_assoc($requete))
+    while($ligne = mysqli_fetch_row($requete))
     {
         array_push($data,$ligne);
     }
