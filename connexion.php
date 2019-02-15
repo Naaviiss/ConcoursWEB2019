@@ -2,7 +2,11 @@
 
 session_start();
 
-$serveur = "localhost";
+
+
+
+if(isset($_POST['id'])){
+	$serveur = "localhost";
 $login = "g1";
 $mdp = "mdp01";
 //nom de la base de donnees
@@ -11,9 +15,6 @@ $bd="WebContest";
 //connexion au serveur mysql (ici localhost)
 $connexion=mysqli_connect($serveur,$login,$mdp,$bd) 
 or die("Connexion au serveur $serveur impossible pour $login");
-
-
-if(isset($_POST['id'])){
 	//  Récupération de l'utilisateur et de son pass hashé
 	$sql = "SELECT id,mdp FROM personnel WHERE id LIKE ".$_POST['id'];
 	$requete = mysqli_query($connexion,$sql	);
@@ -22,7 +23,7 @@ if(isset($_POST['id'])){
 	}
 
 	$ligne=$requete[0];
-	echo $requete[0];
+	echo 'yo'.$requete[0];
 
 
 // Comparaison du pass envoyé via le formulaire avec la base
