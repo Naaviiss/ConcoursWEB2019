@@ -2,9 +2,6 @@
 
 session_start();
 
-
-
-
 if(isset($_POST['id'])){
 	$serveur = "localhost";
 $login = "g1";
