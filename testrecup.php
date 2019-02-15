@@ -5,40 +5,38 @@
     $date = date('d-m-Y');
 
     //CONNEXION DB ET RECUPERATION DATA
-    $connexion = new mysqli("localhost","g1","mdp01","WebContest")
+    $bd = "WebContest";
+    $connexion = mysqli_connect("localhost","g1","mdp01",$bd)
         or die ("Erreur lors de la connexion à la base de données");
-    
-    // $bd = "WebContest";
 
-    // mysqli_select_db($connexion,$bd)
-    //     or die("Erreur lors de l'accès à la base de données");
-
-    if(($requeteprep = $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date"))){
-        echo "la ca marche ";
+    if(!($requeteprep = mysqli_prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = ?"))){
+        echo "la ca marche pa";
     }
     
-    if(!$requeteprep->bind_param(':date',$date)){
+    if(!mysqli_stmt_bind_param($requeteprep,"s",$date)){
         echo("la ca marche pas");
     }
 
-    if(!$requeteprep -> execute()){
+    if(!mysqli_stmt_execute($requeteprep)){
         echo("ca marche pas");
     }
 
-    $data = array();
-
-    $resultat = $requeteprep->get_result();
-
-    while($ligne = mysqli_fetch_row($resultat))
-    {
-        array_push($data,$ligne);
+    if(!mysqli_stmt_bind_result($requeteprep,$id,$nom,$chercheur)){
+        echo("ca marche pas ici");
     }
 
-    var_dump($resultat);
+    $data = array();
+    $i = 0;
+
+    while(mysqli_stmt_fetch($requeteprep))
+    {
+        array_push($data,$id,$nom,$chercheur);
+        $i++;
+    }
 
     var_dump($data);
 
-    $requeteprep -> close();
+    mysqli_stmt_close($requeteprep);
 
 
     mysqli_close($connexion);
