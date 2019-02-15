@@ -11,9 +11,9 @@
 
   $requete = $connexion -> prepare("DELETE FROM Personnel WHERE id LIKE ?");
 
-  if(isset($_POST['id']) ){
-  	$login=$_POST['id'];
-  	$reg = '/^search[4-9]$/';
+  if(isset($_GET['id']) ){
+  	$login=$_GET['id'];
+  	$reg = '/^search([4-9]|[1-9][0-9])$/';
 
     if(preg_match($reg,$login)){
       // suppressions
