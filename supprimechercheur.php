@@ -19,7 +19,7 @@
 
       $requete = $connexion -> prepare("DELETE FROM Personnel WHERE id LIKE ?");
       // suppressions
-      $requete->bind_param("s",$id);
+      $requete->bind_param("s",$login);
       $requete -> execute();
       $requete->close();
     }
