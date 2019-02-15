@@ -1,3 +1,10 @@
+
+<?php
+  session_start();
+  if ($_SESSION["status"]=="admin"){
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +82,8 @@ echo "<tr><td>L'ID de la ressource</td><td>Le nom de la ressource</td><td>La dat
 
 while($ligne=mysqli_fetch_row($resultat)){
   echo "<tr>";
+    $test = $ligne[0];
+
   for ($i =1;$i<5;$i++){
     //La ligne sur la date
     if ($i ==4 || $i==3){
@@ -257,3 +266,9 @@ mysqli_close($connexion);?>
   <script src="js/template.js"></script>
 </body>
 </html>
+<?php
+ }
+ else {
+  header('Location: index.html');
+ }
+ ?>

@@ -1,4 +1,6 @@
 <?php
+  session_start();
+
 echo "<h1>Reservation</h1>";
   $connexion = mysqli_connect("localhost","g1","mdp01")
   or die ("Tu es nul. Recommence.");
