@@ -3,10 +3,10 @@
 session_start();
 
 $serveur = "localhost";
-$login = "root";
-$mdp = "";
+$login = "g1";
+$mdp = "mdp01";
 //nom de la base de donnees
-$bd="webcontest";
+$bd="WebContest";
 
 //connexion au serveur mysql (ici localhost)
 $connexion=mysqli_connect($serveur,$login,$mdp,$bd) 
