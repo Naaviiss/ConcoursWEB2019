@@ -5,15 +5,15 @@
     $date = date('d-m-Y');
 
     //CONNEXION DB ET RECUPERATION DATA
-    $connexion = mysqli_connect("localhost","g1","mdp01")
+    $connexion = new mysqli("localhost","g1","mdp01","WebContest")
         or die ("Erreur lors de la connexion à la base de données");
     
-    $bd = "WebContest";
+    // $bd = "WebContest";
 
-    mysqli_select_db($connexion,$bd)
-        or die("Erreur lors de l'accès à la base de données");
+    // mysqli_select_db($connexion,$bd)
+    //     or die("Erreur lors de l'accès à la base de données");
 
-    if(!($requeteprep = $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date"))){
+    // if(!($requeteprep = $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date"))){
         echo "la ca marche pa";
     }
     
