@@ -18,7 +18,7 @@ $bd="WebContest";
 mysqli_select_db($connexion,$bd)
 or die ("Toujours pas.");
 
-$requete="select * from Ressource";
+$requete="select id,nom,jour,personne from Ressource";
 $resultat=mysqli_query($connexion,$requete);
 echo "<body>";
 echo "<h1> Voici la table des ressources.</h1>";
@@ -46,9 +46,13 @@ while($ligne=mysqli_fetch_row($resultat)){
 			echo "<td>".$ligne[$i]."</td>";
 		}
 	}
-	echo "<td>
-			<a href='reservation.php?id=".$test."'>Reservez</a>
-		</td>";
+	if ($ligne[2] == null){
+			//Si pas reservé
+		echo "<td>
+				<a href='reservation.php?id=".$test."'>Reservez</a>
+			</td>";			
+	}
+
 	echo "</tr>";
 
 }
