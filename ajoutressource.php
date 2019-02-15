@@ -10,7 +10,8 @@ if(isset($_POST['id']) and isset($_POST['mdp']) )
   $login="search";
   $nom="search";
   $jour = date("y.m.d");
-  $id=$_POST['inputGroupSelect02'];
+  //$id=$_POST['inputGroupSelect02'];
+  $id="search";
 
   //connexion au serveur mysql (ici localhost)
   $connexion=mysqli_connect($serveur,$login,$mdp)
