@@ -18,7 +18,13 @@
         array_push($data,$ligne);
     }
 
-    var_dump($data);
+    for($i=0;$i<count($data);$i++)
+    {
+        if($data[$i][0] != NULL)
+        {
+            echo($data[$i][0]."\n");
+        }
+    }
 
     mysqli_free_result($requetep);
 
