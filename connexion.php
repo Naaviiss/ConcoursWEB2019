@@ -37,9 +37,11 @@ if(isset($_POST['id'])){
 			$_SESSION['id'] = $ligne['id'];
 			if(preg_match('/^search$/',$ligne['id'])){
 				$_SESSION['status'] = "search";
+				header('Location : index.php');
 			}
 			else{
 				$_SESSION['status'] = "admin";
+				header('Location : admin.php');
 			}
 				
 			echo 'Vous êtes connecté !';
