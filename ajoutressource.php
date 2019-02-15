@@ -5,8 +5,10 @@ $mdp = "mdp01";
 
 if(isset($_POST['id']) and isset($_POST['mdp']) )
 {
-	$login=$_POST['id'];
-	$mdp=$_POST['mdp'];
+	//$login=$_POST['id'];
+	//$mdp=$_POST['mdp'];
+  $login="search";
+  $nom="search";
   $jour = date("y.m.d");
   $id=$_POST['inputGroupSelect02'];
 
@@ -22,7 +24,7 @@ if(isset($_POST['id']) and isset($_POST['mdp']) )
   $reqinsert="INSERT into ressource(id,mdp,jour,personne) VALUES(?,?,?,?)";
   $reqprepare=mysqli_prepare($connexion,$reqinsert);
   // insertion
-	mysqli_stmt_bind_param($reqprepare,'ssss',$id,$mdp,$jour,$login);
+	mysqli_stmt_bind_param($reqprepare,'ssss',$id,$nom,$jour,$login);
 	mysqli_stmt_execute($reqprepare);
 }
 
