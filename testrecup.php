@@ -13,8 +13,8 @@
     // mysqli_select_db($connexion,$bd)
     //     or die("Erreur lors de l'accès à la base de données");
 
-    // if(!($requeteprep = $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date"))){
-        echo "la ca marche pa";
+    if(($requeteprep = $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date"))){
+        echo "la ca marche ";
     }
     
     if(!$requeteprep->bind_param(':date',$date)){
