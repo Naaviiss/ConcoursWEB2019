@@ -29,19 +29,25 @@ echo "<tr><td>L'ID de la ressource</td><td>Le nom de la ressource</td><td>La dat
 while($ligne=mysqli_fetch_row($resultat)){
 	echo "<tr>";
 	for ($i =0;$i<4;$i++){
-			if ($i != 3){
+		//La ligne sur la date
+		if ($i ==2 || $i==3){
+			//Est-ce que la date est renseignée?
+			if ($ligne[2] != null){
+				//Si un chercheur a reservé
 				echo "<td>".$ligne[$i]."</td>";
 			}
-			else {
-				if ($ligne[2] != null){
-					//Si un chercheur a reservé
-					echo "<td>".$ligne[$i]."</td>";
-				}
+			else{
+				echo "<td> Vide </td>";
 			}
 
 		}
-		echo "</tr>";
+		else{
+			echo "<td>".$ligne[$i]."</td>";
+		}
 	}
+	echo "</tr>";
+
+}
 echo"</table>";
 
 $ligne = null;
