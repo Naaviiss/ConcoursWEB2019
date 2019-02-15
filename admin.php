@@ -101,7 +101,6 @@ while($ligne=mysqli_fetch_row($resultat)){
 	for ($i = 0;$i<3;$i++){
 			echo "<td>".$ligne[$i]."</td>";
 	}
-  echo $test;
   //Bouton pour supprimer un chercheur
   echo "<td><a href='supprimechercheur.php?id=".$test."'>supprimer</a></td>";
   $compteur=$compteur+1;
@@ -113,7 +112,7 @@ echo"</table>";
 echo "<div id='bouton' onclick=\"bascule('header');\">Ajouter un chercheur</div>";
 echo "<div id='header' style=\"visibility:hidden;\">
 
-<form method=\"post\" action=\"traitement.php\">
+<form method=\"post\" action=\"ajouterchercheur.php\">
     <p>
         <label for=\"pseudo\">L'id :</label>
         <input type=\"text\" name=\"id\" id=\"id\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
