@@ -2,6 +2,8 @@
 
 session_start();
 
+error_reporting(E_ALL);
+
 if(isset($_POST['id'])){
 	$serveur = "localhost";
 $login = "g1";
