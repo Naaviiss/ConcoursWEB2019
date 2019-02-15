@@ -9,7 +9,7 @@
     $connexion = mysqli_connect("localhost","g1","mdp01",$bd)
         or die ("Erreur lors de la connexion à la base de données");
 
-    if(!($requeteprep = mysqli_prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = ?"))){
+    if(!($requeteprep = mysqli_prepare($connexion,"select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = ?"))){
         echo "la ca marche pa";
     }
     
