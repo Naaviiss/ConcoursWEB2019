@@ -3,6 +3,7 @@
 
     // $date = $_SESSION["date"];
     $date = date('d-m-Y');
+    echo $date;
 
     //CONNEXION DB ET RECUPERATION DATA
     $connexion = mysqli_connect("localhost","g1","mdp01","WebContest")
@@ -12,6 +13,8 @@
     $requete = mysqli_query($connexion,"select * from Ressource");
 
     $data = array();
+    $resultat =array();
+    $j = 0;
 
     while($ligne = mysqli_fetch_row($requete))
     {
@@ -22,9 +25,18 @@
     {
         if($data[$i][2] != NULL)
         {
-            echo($data[$i][2]."\n");
+            $nvdate = strtotime($data[$i][2]);
+            $nvformat = date('d-m-Y',$nvdate);
+            echo $nvformat."\n";
+
+            if($date == $nvformat){
+                array_push($resultat,$data[$i][0],$data[$i][1],$data[$i][3]);
+                $j++;
+            }
         }
     }
+
+    print_r($resultat);
 
     mysqli_free_result($requetep);
 
