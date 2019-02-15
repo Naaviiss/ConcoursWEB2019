@@ -17,12 +17,14 @@ or die("Connexion au serveur $serveur impossible pour $login");
 	$requete = $connexion->prepare($sql);
 	$requete->bind_param("s",$_POST['id']);
 	$requete ->bind_result($id,$mdp);
-	while($requete->fetch()){
-		echo 'id '.$id;
-		echo 'mdp '.$mdp;
+	while($ligne = mysqli_fetch_row($requete)){
+		echo 'test';
+		array_push($data,$ligne);
 	}
 
-	$requete->close();
+	$ligne=$requete[0];
+	echo 'yo'.$requete[0];
+
 
 // Comparaison du pass envoyé via le formulaire avec la base
 
