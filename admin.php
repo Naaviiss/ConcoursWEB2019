@@ -68,17 +68,7 @@ while($ligne=mysqli_fetch_row($resultat)){
 echo"</table>";
 //Bouton ajouter une ressource
 //echo "<div id='bouton' onclick=\"bascule('header1');\">Ajouter une ressource</div>";
-echo"<div class=\"input-group mb-3\"  onclick=\"bascule('header1');\">
-        <select class=\"custom-select\" id=\"inputGroupSelect02\">
-          <option selected>Choisissez une ressource</option>
-          <option value=\"3DPrinter\">3DPrinter</option>
-          <option value=\"DroneXXL360r\">DroneXXL360r</option>
-          <option value=\"Harm256\">Harm256</option>
-        </select>
-        <div class=\"input-group-append\">
-          <label class=\"input-group-text\" for=\"inputGroupSelect02\">Ajouter</label>
-        </div>
-      </div>";
+echo"<button type=\"button\" class=\"btn btn-secondary\" onclick=\"bascule('header1');\">Ajouter une ressource</button>";
 echo "<div id='header1' style=\"visibility:hidden;\">
 
 <form method=\"post\" action=\"traitement.php\">
