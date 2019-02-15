@@ -35,8 +35,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
-          <li class="active"><a href="#">Accueil</a></li>
-          <li><a class="btn" href="signin.html">S'IDENTIFIER</a></li>
+          <li><a class="btn" href="signin.html">SE DECONNECTER</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -227,8 +226,7 @@ mysqli_close($connexion);?>
           <div class="col-md-6 widget">
             <div class="widget-body">
               <p class="simplenav">
-                <a href="index.html">Accueil</a> | 
-                <b><a href="signin.html">S'identifier</a></b>
+                <b><a href="signin.html">SE DECONNECTER</a></b>
               </p>
             </div>
           </div>
