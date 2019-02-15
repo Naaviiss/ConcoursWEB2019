@@ -13,6 +13,7 @@
 
     $data = array();
     $resultat =array();
+    $j = 0;
 
     while($ligne = mysqli_fetch_row($requete))
     {
@@ -28,8 +29,15 @@
             echo $nvdate."\n";
             $nvformat = date('d-m-Y',$nvdate);
             echo $nvformat."\n";
+
+            if($date == $nvformat){
+                array_push($resultat,$data[$i][0],$data[$i][1],$data[$i][3]);
+                $j++;
+            }
         }
     }
+
+    print_r($resultat);
 
     mysqli_free_result($requetep);
 
