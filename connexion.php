@@ -18,7 +18,8 @@ or die("Connexion au serveur $serveur impossible pour $login");
 	//  Récupération de l'utilisateur et de son pass hashé
 	$sql = "SELECT id,mdp FROM personnel WHERE id LIKE '".$_POST['id']."'";
 	$requete = mysqli_query($connexion,$sql	);
-	while($ligne = mysql_fetch_assoc($requete)){
+	while($ligne = mysql_fetch_row($requete)){
+		echo 'test';
 		array_push($data,$ligne);
 	}
 
