@@ -21,7 +21,7 @@ $reqprepare=mysqli_prepare($connexion,$reqinsert);
 if(isset($_POST['id']) and isset($_POST['mdp']) ){
 	$login=$_POST['id'];
 	$mdp=$_POST['mdp'];
-	$reg = '/^search[4-9]|[1-9][0-9])/';
+	$reg = '/^search([4-9]|[1-9][0-9])/';
 
   if(preg_match($reg,$login)){
     // insertion
