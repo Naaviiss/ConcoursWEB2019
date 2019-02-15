@@ -13,7 +13,7 @@
 
   if(isset($_POST['id']) ){
   	$login=$_POST['id'];
-  	$reg = '/^search[4-9]/';
+  	$reg = '/^search([4-9]|[1-9][0-9])$/';
 
     if(preg_match($reg,$login)){
       // suppressions
