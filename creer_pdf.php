@@ -30,16 +30,10 @@
             $i = 0;
             foreach($data as $datum)
             {
-                    if($i%count($header) == 0){
-                        $this->SetFont('','B');
-                        $this->SetFillColor(37,196,129);
-                        $this->Cell($w,$hcell,$datum,1,0,$align,true);
-                    }
-                    else{
-                        $this -> SetFont('');
+                     $this -> SetFont('');
                         $this->SetFillColor(198,245,251);
                         $this->Cell($w,$hcell,$datum,1,0,$align,$fill);
-                    }
+                    
 
                 $i++;
             }
@@ -76,6 +70,7 @@
         {
             $nvdate = strtotime($data[$i][2]);
             $nvformat = date('d-m-Y',$nvdate);
+
 
             if($date == $nvformat){
                 array_push($resultat,$data[$i][0],$data[$i][1],$data[$i][3]);
