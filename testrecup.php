@@ -13,11 +13,16 @@
     mysqli_select_db($connexion,$bd)
         or die("Erreur lors de l'accès à la base de données");
 
-    $requeteprep= $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date");
-    $requeteprep->bind_param(':date',$date);
+    if($requeteprep = $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date")){
+        echo "la ca marche";
+    }
+    
+    if(!$requeteprep->bind_param(':date',$date)){
+        echo("la ca marche pas");
+    }
 
-    if($requeteprep -> execute()){
-        echo("ca marche");
+    if(!$requeteprep -> execute()){
+        echo("ca marche pas");
     }
 
     $data = array();
