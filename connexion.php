@@ -57,15 +57,14 @@
 						</div>
 						
 						<div class="form-group">
-							<input class="form-control" placeholder="Status" name="status" type="text"
-							>
+							<input class="form-control" placeholder="Status" name="status" type="text" value="" required>
 						</div>
 						
 						<div class='input-group'>
 							<input name='connection' class="btn btn-lg btn-outline-secondary btn-block" type="submit" value="Inscription">
 						</div>
 					</form>
-					<!--
+					
 					<form action='' method='POST'>
 						
 						<div class="form-group">
@@ -85,10 +84,10 @@
 						</div>
 						
 						<div class='input-group'>
-							<input name='connection' class="btn btn-lg btn-outline-secondary btn-block" type="submit" value="Se connecter">
+							<input name='connection_co' class="btn btn-lg btn-outline-secondary btn-block" type="submit" value="Se connecter">
 						</div>
 					</form>
-					-->
+					
 					
 					
 					
@@ -127,12 +126,22 @@ or die("Impossible d'acceder à la base de données");
 	
 $reqinsert="INSERT into personnel(id,mdp,status)";
 $reqinsert.="VALUES(?,?,?)";
-$reqselect="SELECT mdp from personnel WHERE id=id_co";
-$reqselectid="SELECT id from personnel";
+
 
 $reqprepare=mysqli_prepare($connexion,$reqinsert);
 
 //liaison des parametres :
+if(isset($_POST['connection']))
+{
+	preg_match('/(1)(2)(3)/', $_POST['id'], $matches );
+	var_dump($matches);
+}
+
+
+if( $_POST['status'] > 4)
+	echo "test";
+
+
 if(isset($_POST['id']) and isset($_POST['mdp']) ){
 	$login=$_POST['id'];
 	$mdp=$_POST['mdp'];
@@ -142,10 +151,7 @@ if(isset($_POST['id']) and isset($_POST['mdp']) ){
 	mysqli_stmt_execute($reqprepare);
 }
 
-// if(isset($_POST['id_co']) and isset($_POST['mdp'])) {
-	
-//}
-	
+	//finir la connexion
 	
 	
 	
