@@ -3,6 +3,7 @@
 
     // $date = $_SESSION["date"];
     $date = date('d-m-Y');
+    echo $date;
 
     //CONNEXION DB ET RECUPERATION DATA
     $connexion = mysqli_connect("localhost","g1","mdp01","WebContest")
@@ -24,9 +25,7 @@
     {
         if($data[$i][2] != NULL)
         {
-            echo($data[$i][2]."\n");
             $nvdate = strtotime($data[$i][2]);
-            echo $nvdate."\n";
             $nvformat = date('d-m-Y',$nvdate);
             echo $nvformat."\n";
 
