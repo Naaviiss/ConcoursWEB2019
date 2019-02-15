@@ -76,7 +76,6 @@
         {
             $nvdate = strtotime($data[$i][2]);
             $nvformat = date('d-m-Y',$nvdate);
-            echo $nvformat."\n";
 
             if($date == $nvformat){
                 array_push($resultat,$data[$i][0],$data[$i][1],$data[$i][3]);
