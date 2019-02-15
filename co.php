@@ -1,20 +1,5 @@
 <?php
-// session_start();
-
-// Si deja connecter !
-// if (isset($_SESSION['id']) and !empty($_SESSION['id'])){
-	// echo "deja connecte";
-	// header('location: index.php');
-	// exit();
-// }
-// Si pas connecter détruit la session et la relance
-// else{
-	// $_SESSION = Array();
-	// session_destroy();
-	// session_start();
-
-// }
-
+session_start();
 
 ?>
 
@@ -46,7 +31,7 @@
 						</div>			
 
 						<div class="form-group">
-							<input class="form-control" placeholder="Identifiant" name="id" type="text" <?php
+							<input class="form-control" placeholder="id" name="id" type="text" <?php
 							if (isset($_POST['id'])){
 								echo "value="."'".$_POST['id']."'";
 							}?> required>
