@@ -20,9 +20,9 @@
 
     for($i=0;$i<count($data);$i++)
     {
-        if($data[$i][0] != NULL)
+        if($data[$i][2] != NULL)
         {
-            echo($data[$i][0]."\n");
+            echo($data[$i][2]."\n");
         }
     }
 
