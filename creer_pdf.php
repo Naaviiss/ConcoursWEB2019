@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require('./fpdf.php');
 
     class PDF extends FPDF
@@ -61,19 +60,22 @@
         }
     }
 
-    $pdf = new PDF();
+    $_SESSION["date"] = date('d M Y');
 
-    //1er tableau
+    $pdf = new PDF();
+    $date = $_SESSION["date"];
+
     // Titres des colonnes
-    $header = $_SESSION["notes"];
+    $_SESSION["head"] = array("id","nom","personne");
+    $header = $_SESSION["head"];
     // Chargement des données
-    $data = $_SESSION["table"];
+    // $data = $_SESSION["table"];
     $pdf->AddPage('L','A4');
     $wcell = 45; //largeur des cellules
 
     $pdf->SetFont('Times','B',14);
     $pdf->SetTextColor(66,69,88);
-    $pdf ->Cell($wcell*count($header),10,utf8_decode("Résultats du vote des étudiants"),'',0,'C'); //ajout du titre
+    $pdf ->Cell(300,10,utf8_decode("Historique des ressources du ".$date),'',0,'C'); //ajout du titre
     $pdf -> Ln(15);
 
     $pdf->SetFont('Times','',12);
@@ -81,14 +83,6 @@
     $pdf->FancyTable($header,$data,$wcell,2);
 
     $pdf -> Ln(10); //on sépare les tableau
-
-    //2eme tableau
-    // Titres des colonnes
-    $header2 = $_SESSION["matieres"];
-    $wcell = 46; //largeur des cellules
-    $moyecart = $_SESSION["moyecart"];
-    array_unshift($header2,"");
-    $pdf->FancyTable($header2,$moyecart,$wcell,2);
 
     //2eme tableau
     $pdf->Output();
