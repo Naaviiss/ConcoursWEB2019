@@ -60,9 +60,8 @@ while($ligne=mysqli_fetch_row($resultat)){
 		}
 	}
   //Bouton pour supprimer une ressource
-  echo "<td><input class='favorite styled'
-         type='button'
-         value='supprimer'</td>";
+  echo "<td><a href='supprime.php?id=".$i."'>supprimer</a></td>";
+
 	echo "</tr>";
 
 }
@@ -79,10 +78,10 @@ echo "<div id='header1' style=\"visibility:hidden;\">
         <input type=\"text\" name=\"nom\" id=\"nom\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
     </p>
 </form>
-</div>
+
 ";
 
-echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \">";
+echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \"></div>";
 
 echo "<h1> Gestion des utilisateurs </h1>";
 $ligne =0;
@@ -106,31 +105,28 @@ while($ligne=mysqli_fetch_row($resultat)){
 		}
 	}
   //Bouton pour supprimer une ressource
-  echo "<td><input class='favorite styled'
-         type='button'
-         value='supprimer'</td>";
+  echo "<td><a href='supprime.php?id=".$i."'>supprimer</a></td>";
 	echo "</tr>";
 
 }
 echo"</table>";
 
-$requete="select id, mdp from Personnel where status ='user'";
+$requete="select * from Personnel where status ='user'";
 $resultat=mysqli_query($connexion,$requete);
 $ligne = 0;
 echo "<table border='1' cellpadding='5' cellpacing='9'>";
-echo "<tr><td>L'ID du chercheur</td><td>Le mot de passe du chercheur</td><td>Action possible</td></tr>";
+echo "<tr><td>L'ID du chercheur</td><td>Le mot de passe du chercheur</td><td>Status</td><td>Action possible</td></tr>";
 
 while($ligne=mysqli_fetch_row($resultat)){
 	echo "<tr>";
   //$row_cnt = $resultat->num_rows;
   $row_cnt = mysqli_num_rows($resultat);
-	for ($i = 0;$i<$row_cnt;$i++){
+	for ($i = 0;$i<3;$i++){
 			echo "<td>".$ligne[$i]."</td>";
 	}
   //Bouton pour supprimer un chercheur
-  echo "<td><input class='favorite styled'
-         type='button'
-         value='supprimer'</td>";
+  echo "<td><a href='supprime.php?id=".$i."'>supprimer</a></td>";
+
   echo "</tr>";
 
 }
@@ -147,10 +143,10 @@ echo "<div id='header' style=\"visibility:hidden;\">
         <input type=\"text\" name=\"mdp\" id=\"mdp\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
     </p>
 </form>
-</div>
+
 ";
 
-echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \">";
+echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \"></div>";
 
 echo "<pre></pre>";
 //Bouton pour le pdf
