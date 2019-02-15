@@ -21,6 +21,7 @@ or die("Connexion au serveur $serveur impossible pour $login");
 	{
 		
 		while($ligne = mysqli_fetch_row($requete)){
+			echo $ligne[0];
 			$id =  htmlspecialchars($ligne[0]);
 			$mdp2 = htmlspecialchars($ligne[1]);
 		}
