@@ -1,17 +1,16 @@
 <?php
 $serveur = "localhost";
-$login = "g1";
-$mdp = "mdp01";
+$login = "root";
+$mdp = "";
 
 if(isset($_POST['id']) and isset($_POST['mdp']) )
 {
-	//$login=$_POST['id'];
-	//$mdp=$_POST['mdp'];
-  $login="search";
+	$login="search";
+  //$login="search";
   $nom="search";
   $jour = date("y.m.d");
-  //$id=$_POST['inputGroupSelect02'];
-  $id="search";
+  $id=$_POST['inputGroupSelect02'];
+
 
   //connexion au serveur mysql (ici localhost)
   $connexion=mysqli_connect($serveur,$login,$mdp)
@@ -22,7 +21,7 @@ if(isset($_POST['id']) and isset($_POST['mdp']) )
   mysqli_select_db($connexion,$bd)
   or die("Impossible d'accéder à la base de données");
 
-  $reqinsert="INSERT into ressource(id,mdp,jour,personne) VALUES(?,?,?,?)";
+  $reqinsert="INSERT into ressource(id,nom,jour,personne) VALUES(?,?,?,?)";
   $reqprepare=mysqli_prepare($connexion,$reqinsert);
   // insertion
 	mysqli_stmt_bind_param($reqprepare,'ssss',$id,$nom,$jour,$login);
