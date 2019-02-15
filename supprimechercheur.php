@@ -21,13 +21,14 @@
       // suppressions
       $requete->bind_param("s",$id);
       $requete -> execute();
+      $requete->close();
     }
   	else{
       echo "Vous ne pouvez pas supprimer ce chercheur";
     }
   }
 
-  $requete->close();
+
 
 	mysqli_close($connexion);
 ?>
