@@ -1,9 +1,9 @@
 <?php
 	echo "<h1>Modification de fiche client</h1>";
-  //$connexion = mysqli_connect("localhost","g1","mdp01")
-  //or die ("Tu es nul. Recommence.");
-  $connexion = mysqli_connect("localhost","root","")
+  $connexion = mysqli_connect("localhost","g1","mdp01")
   or die ("Tu es nul. Recommence.");
+  //$connexion = mysqli_connect("localhost","root","")
+  //or die ("Tu es nul. Recommence.");
 
   $bd="WebContest";
 
