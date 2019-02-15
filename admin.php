@@ -35,7 +35,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right">
-          <li><a class="btn" href="signin.html">SE DECONNECTER</a></li>
+          <li><a class="btn" href="deconnexion.php">SE DECONNECTER</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -55,10 +55,10 @@
   <!-- Intro -->
   <div class="container text-center jumbotron ">
 <?php
-   //$connexion = mysqli_connect("localhost","g1","mdp01")
- //or die ("Tu es nul. Recommence.");
-$connexion = mysqli_connect("localhost","root","")
+$connexion = mysqli_connect("localhost","g1","mdp01")
 or die ("Tu es nul. Recommence.");
+//$connexion = mysqli_connect("localhost","root","")
+//or die ("Tu es nul. Recommence.");
 
 $bd="WebContest";
 
@@ -226,7 +226,7 @@ mysqli_close($connexion);?>
           <div class="col-md-6 widget">
             <div class="widget-body">
               <p class="simplenav">
-                <b><a href="signin.html">SE DECONNECTER</a></b>
+                <b><a href="deconnexion.php">SE DECONNECTER</a></b>
               </p>
             </div>
           </div>
