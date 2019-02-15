@@ -53,7 +53,6 @@
 
     //CONNEXION DB ET RECUPERATION DATA
     $date = date('d-m-Y');
-    echo $date;
 
     //CONNEXION DB ET RECUPERATION DATA
     $connexion = mysqli_connect("localhost","g1","mdp01","WebContest")
