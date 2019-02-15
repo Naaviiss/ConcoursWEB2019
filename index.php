@@ -8,10 +8,10 @@ echo "<!DOCTYPE html>
 	    <meta charset='utf-8'>
 	    <title></title>
 	  </head>";
-$connexion = mysqli_connect("localhost","g1","mdp01")
-or die ("Tu es nul. Recommence.");
-//$connexion = mysqli_connect("localhost","root","")
+//$connexion = mysqli_connect("localhost","g1","mdp01")
 //or die ("Tu es nul. Recommence.");
+$connexion = mysqli_connect("localhost","root","")
+or die ("Tu es nul. Recommence.");
 
 $bd="WebContest";
 
@@ -29,6 +29,7 @@ echo "<tr><td>L'ID de la ressource</td><td>Le nom de la ressource</td><td>La dat
 while($ligne=mysqli_fetch_row($resultat)){
 	echo "<tr>";
 	for ($i =0;$i<4;$i++){
+		  $test = $ligne[0];
 		//La ligne sur la date
 		if ($i ==2 || $i==3){
 			//Est-ce que la date est renseignée?
@@ -45,6 +46,9 @@ while($ligne=mysqli_fetch_row($resultat)){
 			echo "<td>".$ligne[$i]."</td>";
 		}
 	}
+	echo "<td>
+			<a href='reservation.php?id=".$test."'>Reservez</a>
+		</td>";
 	echo "</tr>";
 
 }
