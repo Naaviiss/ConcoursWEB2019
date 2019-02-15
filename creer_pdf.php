@@ -66,14 +66,14 @@
 
     for($i=0;$i<count($data);$i++)
     {
-        if($data[$i][2] != NULL)
+        if($data[$i][3] != NULL)
         {
-            $nvdate = strtotime($data[$i][2]);
+            $nvdate = strtotime($data[$i][3]);
             $nvformat = date('d-m-Y',$nvdate);
 
 
             if($date == $nvformat){
-                array_push($resultat,$data[$i][0],$data[$i][1],$data[$i][3]);
+                array_push($resultat,$data[$i][1],$data[$i][2],$data[$i][4]);
                 $j++;
             }
         }
