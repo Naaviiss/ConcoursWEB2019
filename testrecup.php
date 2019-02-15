@@ -12,6 +12,7 @@
     $requete = mysqli_query($connexion,"select * from Ressource");
 
     $data = array();
+    $resultat =array();
 
     while($ligne = mysqli_fetch_row($requete))
     {
@@ -23,6 +24,10 @@
         if($data[$i][2] != NULL)
         {
             echo($data[$i][2]."\n");
+            $nvdate = strtotime($data[$i][2]);
+            echo $nvdate."\n";
+            $nvformat = date('d-m-Y',$nvdate);
+            echo $nvformat."\n";
         }
     }
 
