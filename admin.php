@@ -89,7 +89,7 @@ echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \"></div>";
 echo "<h1> Gestion des utilisateurs.</h1>";
 
 
-$requete="select * from Personnel where status ='user'";
+$requete="select * from Personnel where status ='search'";
 $resultat=mysqli_query($connexion,$requete);
 $ligne = 0;
 echo "<table border='1' cellpadding='5' cellpacing='9'>";
