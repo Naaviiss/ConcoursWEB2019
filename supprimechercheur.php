@@ -22,6 +22,7 @@
       $requete->bind_param("s",$login);
       $requete -> execute();
       $requete->close();
+      header(Location: ./admin.php);
     }
   	else{
       echo "Vous ne pouvez pas supprimer ce chercheur";
