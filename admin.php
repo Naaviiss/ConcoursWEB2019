@@ -1,6 +1,9 @@
 
 <?php
   session_start();
+  if ($_SESSION["status"]=="admin"){
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -263,3 +266,9 @@ mysqli_close($connexion);?>
   <script src="js/template.js"></script>
 </body>
 </html>
+<?php
+ }
+ else {
+  header('Location: index.html');
+ }
+ ?>

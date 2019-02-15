@@ -1,5 +1,7 @@
 <?php
   session_start();
+    if ($_SESSION["status"]=="search"){
+
 ?>
 
 <!DOCTYPE html>
@@ -205,3 +207,9 @@ mysqli_close($connexion);?>
 	<script src="js/template.js"></script>
 </body>
 </html>
+<?php
+ }
+ else {
+  header('Location: index.html');
+ }
+ ?>
