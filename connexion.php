@@ -15,11 +15,10 @@ $bd="WebContest";
 $connexion=mysqli_connect($serveur,$login,$mdp,$bd) 
 or die("Connexion au serveur $serveur impossible pour $login");
 	//  Récupération de l'utilisateur et de son pass hashé
-	$sql = "SELECT * FROM personnel WHERE id LIKE '".$_POST['id']."'";
+	$sql = "SELECT id,mdp FROM personnel WHERE id LIKE '".$_POST['id']."'";
 	
 	if($requete = mysqli_query($connexion,$sql))
 	{
-		
 		while($ligne = mysqli_fetch_row($requete)){
 			echo $ligne[0];
 			$id =  htmlspecialchars($ligne[0]);
