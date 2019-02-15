@@ -8,7 +8,19 @@ echo "<!DOCTYPE html>
 	    <meta charset='utf-8'>
 	    <title></title>
       <link href='css/bootstrap.min.css' rel='stylesheet' id='css2'/>
+
+      <script type='text/javascript'>
+      function bascule(id)
+      {
+      	if (document.getElementById(id).style.visibility == 'hidden')
+      			document.getElementById(id).style.visibility = 'visible';
+      	else{
+        	document.getElementById(id).style.visibility = 'hidden';
+        }
+      }
+      </script>
 	  </head>";
+
 //$connexion = mysqli_connect("localhost","g1","mdp01")
 //or die ("Tu es nul. Recommence.");
 $connexion = mysqli_connect("localhost","root","")
@@ -56,9 +68,21 @@ while($ligne=mysqli_fetch_row($resultat)){
 }
 echo"</table>";
 //Bouton ajouter une ressource
-echo "<input class='favorite styled'
-       type='button'
-       value='Ajouter une ressource'>";
+echo "<div id='bouton' onclick=\"bascule('header1');\">Ajouter une ressource</div>";
+echo "<div id='header1' style=\"visibility:hidden;\">
+
+<form method=\"post\" action=\"traitement.php\">
+    <p>
+        <label for=\"pseudo\">L'id :</label>
+        <input type=\"text\" name=\"id\" id=\"id\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
+        <label for=\"pseudo\">Le nom de la ressource :</label>
+        <input type=\"text\" name=\"nom\" id=\"nom\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
+    </p>
+</form>
+</div>
+";
+
+echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \">";
 
 echo "<h1> Gestion des utilisateurs </h1>";
 $ligne =0;
@@ -111,11 +135,22 @@ while($ligne=mysqli_fetch_row($resultat)){
 
 }
 echo"</table>";
-//Bouton ajouter une ressource
-echo "<input class='favorite styled'
-       type='button'
-       value='Ajouter une ressource'>";
+//Bouton un chercheur
+echo "<div id='bouton' onclick=\"bascule('header');\">Ajouter un chercheur</div>";
+echo "<div id='header' style=\"visibility:hidden;\">
 
+<form method=\"post\" action=\"traitement.php\">
+    <p>
+        <label for=\"pseudo\">L'id :</label>
+        <input type=\"text\" name=\"id\" id=\"id\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
+        <label for=\"pseudo\">Le mot de passe :</label>
+        <input type=\"text\" name=\"mdp\" id=\"mdp\" placeholder=\"Ex : Zozor\" size=\"30\" maxlength=\"10\" /></br>
+    </p>
+</form>
+</div>
+";
+
+echo "<INPUT TYPE=\"submit\" NAME=\"nom\" VALUE=\" Envoyer \">";
 
 echo "<pre></pre>";
 //Bouton pour le pdf
