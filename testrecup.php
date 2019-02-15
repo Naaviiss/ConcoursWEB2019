@@ -16,7 +16,9 @@
     $requeteprep= $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date");
     $requeteprep->bind_param(':date',$date);
 
-    $requeteprep -> execute();
+    if($requeteprep -> execute()){
+        echo("ca marche");
+    }
 
     $data = array();
 
