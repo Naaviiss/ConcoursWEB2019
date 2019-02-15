@@ -60,6 +60,10 @@
 							<input class="form-control" placeholder="Status" name="status" type="text" value="" required>
 						</div>
 						
+						<div class="form-group">
+							<input class="form-control" placeholder="Nom" name="nom" type="text" value="" required>
+						</div>
+						
 						<div class='input-group'>
 							<input name='connection' class="btn btn-lg btn-outline-secondary btn-block" type="submit" value="Inscription">
 						</div>
@@ -124,117 +128,26 @@ or die("Impossible d'acceder à la base de données");
 	
 	
 	
-$reqinsert="INSERT into personnel(id,mdp,status)";
-$reqinsert.="VALUES(?,?,?)";
+$reqinsert="INSERT into personnel(id,mdp,status) VALUES(?,?,?)";
+$reqinsert_ressource="INSERT into ressource(id,nom,jour,personne) VALUES(?,?,?,?)";
 
 
 $reqprepare=mysqli_prepare($connexion,$reqinsert);
-
-//liaison des parametres :
-if(isset($_POST['connection']))
-{
-	preg_match('/(1)(2)(3)/', $_POST['id'], $matches );
-	var_dump($matches);
-}
-
-
-if( $_POST['status'] > 4)
-	echo "test";
-
+$reqprepare_ressource=mysqli_prepare($connexion,$reqinsert_ressource);
 
 if(isset($_POST['id']) and isset($_POST['mdp']) ){
 	$login=$_POST['id'];
 	$mdp=$_POST['mdp'];
-	$status = 0;
+	$status = $_POST['status'];
+	$date = date("y.m.d");
+	$nom = $_POST['nom'];
 	// insertion
+	mysqli_stmt_bind_param($reqprepare_ressource,'ssss',$nom,$mdp,$date,$login);
+	mysqli_stmt_execute($reqprepare_ressource);
 	mysqli_stmt_bind_param($reqprepare,'sss',$login,$mdp,$status);
 	mysqli_stmt_execute($reqprepare);
+
 }
 
 	//finir la connexion
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-// echo "test";
-	
-// if (isset($_POST["id"],$_POST["mdp"])){
-	// $login = htmlspecialchars($_POST["id"]);
-	// //$mdp = hash("sha256",htmlspecialchars($_POST["mdp"]));
-	// $mdp = htmlspecialchars($_POST["mdp"]);
-		
-	$req = "SELECT * FROM personnel WHERE id like \"$login\" and mdp like \"$mdp\"";
-	// $requeteprep= $connexion->mysqli->prepare("select id,mdp from personnel where id:i and mdp:md");
-	// $requeteprep->bind_param(':i',$id);
-	// $requeteprep->bind_param(':md',$mdp);
-	
-	// if ($res = mysqli_query($connexion,$req)){ //test si la commande est bien exec
-		// $rowcount=mysqli_num_rows($res);
-		// if ($rowcount > 0) { //test si on a des resultats
-			// $lig = mysqli_fetch_assoc($res);
-			// $_SESSION['id'] = $lig['id'];
-			// header('Location: index.php');
-		// }else{
-			// echo '<div class="container">
-					// <div class="row justify-content-center">
-					// <p>Mot de passe ou identifiant incorrect</p>
-					// </div>
-				// </div>';
-		// }
-	// }else{ 
-		// echo "Impossible d'acceder a la table personnel !";
-	// }
-// }
-
-// else
-	// echo "NON";
-
-
-// /**TEST SI IL EXISTE AUCUN COMPTE DANS LA BD**/
-
-// $req = "SELECT * FROM personnel";
-// if ($res = mysqli_query($connexion,$req)){ //test si la commande est bien exec
-	// $rowcount=mysqli_num_rows($res);
-	// if ($rowcount <= 0) { //test si on a des resultats
-		// echo "Il n'existe pas de compte !";
-		// ?>
-		
-		<?php
-		
-		// if (isset($_POST["cid"],$_POST["cmdp"],$_POST["cmdpconf"],$_POST["type"]) and $_POST["cmdp"] == $_POST["cmdpconf"]){
-			// $reqinsert="INSERT into UTILISATEUR(id,mdp,status)";
-			// $reqinsert.="VALUES(?,?,?)";
-
-			// $reqprepare=mysqli_prepare($connexion,$reqinsert);
-
-			// //liaison des parametres :
-			// if (isset($_POST['cmdp'],$_POST['cmdp'],$_POST['type'])){
-				// $login=$_POST['cid'];
-				// $mdp= hash("sha256",htmlspecialchars($_POST["cmdp"]));
-				// /* $mdp = htmlspecialchars($_POST["cmdp"]); */
-				// $droit=0;
-
-// //				insertion
-				// mysqli_stmt_bind_param($reqprepare,'sss',$login,$mdp,$droit);
-				// mysqli_stmt_execute($reqprepare);
-			// }
-		// }
-	// }		
-// }else{ 
-	// echo "Impossible d'acceder a la table UTILISATEUR !";
-// }
-
-
 ?>
