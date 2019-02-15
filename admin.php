@@ -21,10 +21,10 @@ echo "<!DOCTYPE html>
       </script>
 	  </head>";
 
-$connexion = mysqli_connect("localhost","g1","mdp01")
+// $connexion = mysqli_connect("localhost","g1","mdp01")
+// or die ("Tu es nul. Recommence.");
+$connexion = mysqli_connect("localhost","root","")
 or die ("Tu es nul. Recommence.");
-//$connexion = mysqli_connect("localhost","root","")
-//or die ("Tu es nul. Recommence.");
 
 $bd="WebContest";
 
@@ -42,16 +42,16 @@ echo "<tr><td>L'ID de la ressource</td><td>Le nom de la ressource</td><td>La dat
 
 while($ligne=mysqli_fetch_row($resultat)){
 	echo "<tr>";
-	for ($i =0;$i<4;$i++){
+	for ($i =1;$i<5;$i++){
 		//La ligne sur la date
-		if ($i ==2 || $i==3){
+		if ($i ==4 || $i==3){
 			//Est-ce que la date est renseignée?
-			if ($ligne[2] != null){
+			if ($ligne[3] != null){
 				//Si un chercheur a reservé
 				echo "<td>".$ligne[$i]."</td>";
 			}
 			else{
-				echo "<td> Vide </td>";
+				echo "<td> Disponible </td>";
 			}
 
 		}
@@ -60,14 +60,25 @@ while($ligne=mysqli_fetch_row($resultat)){
 		}
 	}
   //Bouton pour supprimer une ressource
-  echo "<td><a href='supprimeressource.php?id=".$i."'>supprimer</a></td>";
+  echo "<td><a href='supprimeressource.php?id=".$i."'>Cliquer ici pour supprimer une ressource</a></td>";
 
 	echo "</tr>";
 
 }
 echo"</table>";
 //Bouton ajouter une ressource
-echo "<div id='bouton' onclick=\"bascule('header1');\">Ajouter une ressource</div>";
+//echo "<div id='bouton' onclick=\"bascule('header1');\">Ajouter une ressource</div>";
+echo"<div class="input-group mb-3"  onclick=\"bascule('header1');\">
+        <select class="custom-select" id="inputGroupSelect02">
+          <option selected>Choisissez une ressource</option>
+          <option value="3DPrinter">3DPrinter</option>
+          <option value="DroneXXL360r">DroneXXL360r</option>
+          <option value="Harm256">Harm256</option>
+        </select>
+        <div class="input-group-append">
+          <label class="input-group-text" for="inputGroupSelect02">Ajouter</label>
+        </div>
+      </div>";
 echo "<div id='header1' style=\"visibility:hidden;\">
 
 <form method=\"post\" action=\"traitement.php\">
