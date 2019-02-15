@@ -1,7 +1,7 @@
 <?php
 $serveur = "localhost";
-$login = "root";
-$mdp = "";
+$login = "g1";
+$mdp = "mdp01";
 
 if(isset($_POST['id']) and isset($_POST['mdp']) )
 {
