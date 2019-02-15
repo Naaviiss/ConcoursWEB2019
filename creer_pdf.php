@@ -48,39 +48,45 @@
         }
     }
 
-    $_SESSION["date"] = date('d-m-Y');
-
     $pdf = new PDF();
-    $date = $_SESSION["date"];
+    
 
     //CONNEXION DB ET RECUPERATION DATA
-    $connexion = mysqli_connect("localhost","g1","mdp01")
+    $date = date('d-m-Y');
+    echo $date;
+
+    //CONNEXION DB ET RECUPERATION DATA
+    $connexion = mysqli_connect("localhost","g1","mdp01","WebContest")
         or die ("Erreur lors de la connexion à la base de données");
-    
-    $bd = "WebContest";
 
-    mysqli_select_db($connexion,$bd)
-        or die("Erreur lors de l'accès à la base de données");
 
-    $requeteprep= $connexion->prepare("select id,nom,chercheur from Ressource where date_format(jour,'%d-%m-%Y') = :date");
-    $requeteprep->bind_param(':date',$date);
-
-    $requeteprep -> execute();
+    $requete = mysqli_query($connexion,"select * from Ressource");
 
     $data = array();
+    $resultat =array();
+    $j = 0;
 
-    $resultat = $requeteprep->get_result();
-
-    while($ligne = mysqli_fetch_row($resultat))
+    while($ligne = mysqli_fetch_row($requete))
     {
         array_push($data,$ligne);
     }
 
-    print_r($resultat);
+    for($i=0;$i<count($data);$i++)
+    {
+        if($data[$i][2] != NULL)
+        {
+            $nvdate = strtotime($data[$i][2]);
+            $nvformat = date('d-m-Y',$nvdate);
+            echo $nvformat."\n";
 
-    print_r($data);
+            if($date == $nvformat){
+                array_push($resultat,$data[$i][0],$data[$i][1],$data[$i][3]);
+                $j++;
+            }
+        }
+    }
 
-    $requeteprep -> close();
+    mysqli_free_result($requetep);
 
 
     mysqli_close($connexion);
@@ -100,7 +106,7 @@
     $pdf -> Ln(15);
 
     $pdf->SetFont('Times','',12);
-    $pdf->FancyTable($header,$data,$wcell);
+    $pdf->FancyTable($header,$resultat,$wcell);
 
     $pdf -> Ln(10); //on sépare les tableau
 
